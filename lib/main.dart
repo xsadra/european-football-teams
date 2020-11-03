@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-void main(){
+import 'package:football/app/home.dart';
+import 'package:football/constant/colors.dart';
+
+void main() {
   runApp(MainApp());
 }
 
