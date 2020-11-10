@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:football/app/view.dart';
 import 'package:football/data/club.dart';
 
 class Home extends StatefulWidget {
@@ -57,9 +58,15 @@ class _HomeState extends State<Home> {
                           title: Text(snapshot.data[index].name),
                           subtitle: Text(snapshot.data[index].country),
                           //TODO: Change the Text for 0 , 1 and more than one
-                          trailing: Text(snapshot.data[index].value.toString() +
-                              " Millionen"),
-                          leading: Image.network(snapshot.data[index].image),
+                          trailing: Text(club.value.toString() + " Millionen"),
+                          leading: Image.network(club.image),
+                          onTap: () async {
+                            MaterialPageRoute route = MaterialPageRoute(
+                              builder: (context) => ViewClubScreen(club: club),
+                            );
+
+                            await Navigator.push(context, route);
+                          },
                         );
                       },
                     )
