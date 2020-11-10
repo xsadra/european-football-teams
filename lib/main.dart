@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:football/app/home.dart';
 import 'package:football/app/view.dart';
 import 'package:football/constant/colors.dart';
+import 'package:football/locale/app_localization.dart';
 
 void main() {
   runApp(MainApp());
@@ -10,6 +11,7 @@ void main() {
 
 class MainApp extends StatelessWidget {
   static String id = 'home';
+  AppLocalizationDelegate _localeOverrideDelegate = AppLocalizationDelegate(Locale('en', 'US'));
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
+        GlobalCupertinoLocalizations.delegate,
+        _localeOverrideDelegate
       ],
     );
   }
