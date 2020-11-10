@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:football/app/home.dart';
 import 'package:football/constant/colors.dart';
 
@@ -12,7 +13,18 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'European Football Teams',
       theme: ThemeData().copyWith(primaryColor: kMainColor),
-      home:Home(),
+      home: Home(),
+      supportedLocales: [
+        Locale('en', 'GB'),
+        Locale('de', 'AT'),
+        Locale('de', 'DE'),
+        Locale('pl', 'PL')
+      ],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
     );
   }
 }
