@@ -1,0 +1,23 @@
+{
+  "@@last_modified": "2020-11-10T22:35:07.154096",
+  "appTitle": "all about clubs",
+  "@appTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "club": "club",
+  "@club": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "firstMessage": " from xCountry is worth xValue million euros.",
+  "@firstMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "secondMessage": " has so far achieved xVictorious victories at European level.",
+  "@secondMessage": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
