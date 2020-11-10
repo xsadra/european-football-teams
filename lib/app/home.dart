@@ -15,7 +15,8 @@ class _HomeState extends State<Home> {
     String path = "https://public.allaboutapps.at/hiring/clubs.json";
     var dio = Dio();
     Response response = await dio.get(path);
-    List<Club> list = (response.data as List).map((item) => Club.fromJson(item)).toList();
+    List<Club> list =
+        (response.data as List).map((item) => Club.fromJson(item)).toList();
 
     if (ascSort) {
       list.sort((a, b) => a.name.compareTo(b.name));
@@ -52,11 +53,10 @@ class _HomeState extends State<Home> {
                   ? ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-                        // print(snapshot.data[index].name);
-
+                        Club club = snapshot.data[index];
                         return ListTile(
-                          title: Text(snapshot.data[index].name),
-                          subtitle: Text(snapshot.data[index].country),
+                          title: Text(club.name),
+                          subtitle: Text(club.country),
                           //TODO: Change the Text for 0 , 1 and more than one
                           trailing: Text(club.value.toString() + " Millionen"),
                           leading: Image.network(club.image),
