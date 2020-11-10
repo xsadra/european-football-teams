@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football/constant/colors.dart';
-import 'package:football/data/club.dart';
+import 'package:football/model/club.dart';
 import 'package:football/locale/app_localization.dart';
 
 class ViewClubScreen extends StatelessWidget {

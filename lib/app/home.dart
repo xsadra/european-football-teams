@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:football/app/view.dart';
-import 'package:football/data/club.dart';
+import 'package:football/model/club.dart';
+import 'package:football/service/club_repository.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,24 +12,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool ascSort = true;
 
-  Future<List<Club>> _getClubs() async {
-    String path = "https://public.allaboutapps.at/hiring/clubs.json";
-    var dio = Dio();
-    Response response = await dio.get(path);
-    List<Club> list =
-        (response.data as List).map((item) => Club.fromJson(item)).toList();
-
-    if (ascSort) {
-      list.sort((a, b) => a.name.compareTo(b.name));
-    } else {
-      list.sort((a, b) => b.name.compareTo(a.name));
-    }
-
-    return list;
-  }
-
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -47,7 +33,7 @@ class _HomeState extends State<Home> {
         body: Container(
           color: Colors.white,
           child: FutureBuilder(
-            future: _getClubs(),
+            future: ClubRepository.getClubs(ascSort),
             builder: (context, AsyncSnapshot<List<Club>> snapshot) {
               return snapshot.hasData
                   ? ListView.builder(
@@ -57,7 +43,6 @@ class _HomeState extends State<Home> {
                         return ListTile(
                           title: Text(club.name),
                           subtitle: Text(club.country),
-                          //TODO: Change the Text for 0 , 1 and more than one
                           trailing: Text(club.value.toString() + " Millionen"),
                           leading: Image.network(club.image),
                           onTap: () async {

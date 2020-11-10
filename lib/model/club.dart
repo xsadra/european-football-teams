@@ -1,6 +1,6 @@
 
-import 'package:football/data/location.dart';
-import 'package:football/data/stadium.dart';
+import 'package:football/model/location.dart';
+import 'package:football/model/stadium.dart';
 
 class Club {
   String id;
