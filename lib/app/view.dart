@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:football/constant/colors.dart';
 import 'package:football/data/club.dart';
+import 'package:football/locale/app_localization.dart';
 
 class ViewClubScreen extends StatelessWidget {
   static String id = 'view_screen';
@@ -10,6 +11,8 @@ class ViewClubScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalization msg = AppLocalization.of(context);
+
     return MaterialApp(
       theme: ThemeData().copyWith(primaryColor: kMainColor),
       home: Scaffold(
@@ -58,6 +61,51 @@ class ViewClubScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(text: msg.club + ' '),
+                        TextSpan(
+                            text: club.name,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                          text: msg.firstMessage
+                              .replaceFirst('xCountry', club.country)
+                              .replaceFirst('xValue', club.value.toString()),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: club.name,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                          text: msg.secondMessage
+                              .replaceFirst('xVictorious', club.europeanTitles.toString()),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
