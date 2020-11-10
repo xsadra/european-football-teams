@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:football/data/club.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +13,6 @@ class _HomeState extends State<Home> {
   bool ascSort = true;
 
   Future<List<Club>> _getClubs() async {
-
     String path = "https://public.allaboutapps.at/hiring/clubs.json";
     final res = await http.get(path);
     var body = res.body;
@@ -26,7 +26,6 @@ class _HomeState extends State<Home> {
     }
     return list;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +46,36 @@ class _HomeState extends State<Home> {
         ),
         body: Container(
           color: Colors.white,
+          child: FutureBuilder(
+            future: _getClubs(),
+            builder: (context, AsyncSnapshot<List<Club>> snapshot) {
+              return snapshot.hasData
+                  ? ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(snapshot.data[index].name),
+                          subtitle: Text(snapshot.data[index].country),
+                          //TODO: Change the Text for 0 , 1 and more than one
+                          trailing: Text(snapshot.data[index].value.toString() +
+                              " Millionen"),
+                          leading: Image.network(snapshot.data[index].image),
+                        );
+                      },
+                    )
+                  : Container(
+                      child: Center(
+                        child: Text(
+                          "Lade Daten ...",
+                          style: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 21.0,
+                              letterSpacing: 3),
+                        ),
+                      ),
+                    );
+            },
+          ),
         ),
       ),
     );
