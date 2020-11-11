@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:football/constant/texts.dart';
 import 'package:football/model/club.dart';
 import 'package:football/service/club_repository.dart';
+import 'package:football/widget/action_icon_button.dart';
 import 'package:football/widget/club_list_view.dart';
 import 'package:football/widget/loading_data_widget.dart';
 
@@ -17,34 +19,28 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("all about clubs"),
+          title: Text(kAppName),
           actions: [
-            IconButton(
-              //TODO : change the icon
-              icon: Icon((ascSort) ? Icons.arrow_upward : Icons.arrow_downward),
-              tooltip: 'Sort',
-              onPressed: () {
-                toggleSort();
-              },
-            )
+            ActionIconButton(
+              ascSort: ascSort,
+              imagePath: kActionIconImagePath,
+              onPressed: _toggleSort,
+            ),
           ],
         ),
-        body: Container(
-          color: Colors.white,
-          child: FutureBuilder(
-            future: ClubRepository.getClubs(ascSort),
-            builder: (context, AsyncSnapshot<List<Club>> snapshot) {
-              return snapshot.hasData
-                  ? ClubListView(snapshot: snapshot)
-                  : LoadingDataWidget();
-            },
-          ),
+        body: FutureBuilder(
+          future: ClubRepository.getClubs(ascSort),
+          builder: (context, AsyncSnapshot<List<Club>> snapshot) {
+            return snapshot.hasData
+                ? ClubListView(snapshot: snapshot)
+                : LoadingDataWidget();
+          },
         ),
       ),
     );
   }
 
-  void toggleSort() {
+  void _toggleSort() {
     setState(() {
       ascSort = !ascSort;
     });
