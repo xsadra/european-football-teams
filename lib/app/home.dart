@@ -6,7 +6,7 @@ import 'package:football/service/club_repository.dart';
 import 'package:football/service/exception.dart';
 import 'package:football/widget/action_icon_button.dart';
 import 'package:football/widget/club_list_view.dart';
-import 'package:football/widget/loading_data_widget.dart';
+import 'package:football/widget/notify_panel.dart';
 
 class Home extends StatefulWidget {
   @override
