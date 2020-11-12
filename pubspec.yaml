@@ -29,3 +29,4 @@ flutter:
 
   assets:
     - assets/icons/filter.png
+    - assets/configs.json
