@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool ascSort = true;
+  bool ascOrder = true;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,14 @@ class _HomeState extends State<Home> {
           title: Text(kAppName),
           actions: [
             ActionIconButton(
-              ascSort: ascSort,
+              ascOrder: ascOrder,
               imagePath: kActionIconImagePath,
               onPressed: _toggleSort,
             ),
           ],
         ),
         body: FutureBuilder(
-          future: ClubRepository.getClubs(ascSort),
+          future: ClubRepository.getClubs(ascOrder),
           builder: (context, AsyncSnapshot<List<Club>> snapshot) {
             return snapshot.hasData
                 ? ClubListView(snapshot: snapshot)
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
 
   void _toggleSort() {
     setState(() {
-      ascSort = !ascSort;
+      ascOrder = !ascOrder;
     });
   }
 }

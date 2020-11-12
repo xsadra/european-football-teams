@@ -3,13 +3,13 @@ import 'dart:math' as Math;
 import 'package:flutter/material.dart';
 
 class ActionIconButton extends StatelessWidget {
-  final bool ascSort;
+  final bool ascOrder;
   final String imagePath;
   final VoidCallback onPressed;
 
   const ActionIconButton({
     Key key,
-    @required this.ascSort,
+    @required this.ascOrder,
     @required this.imagePath,
     @required this.onPressed,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class ActionIconButton extends StatelessWidget {
     return IconButton(
       icon: Transform(
         transform:
-            (ascSort) ? Matrix4.rotationZ(Math.pi) : Matrix4.rotationZ(0),
+            (ascOrder) ? Matrix4.rotationZ(Math.pi) : Matrix4.rotationZ(0),
         alignment: Alignment.center,
         child: Image.asset(
           imagePath,

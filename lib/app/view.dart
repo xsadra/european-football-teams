@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:football/constant/colors.dart';
+import 'package:football/constant/constants.dart';
+import 'package:football/locale/app_localization.dart';
 import 'package:football/model/club.dart';
 import 'package:football/locale/app_localization.dart';
 
@@ -97,8 +98,8 @@ class ViewClubScreen extends StatelessWidget {
                             text: club.name,
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         TextSpan(
-                          text: msg.secondMessage
-                              .replaceFirst('xVictorious', club.europeanTitles.toString()),
+                          text: msg.secondMessage.replaceFirst(
+                              'xVictorious', club.europeanTitles.toString()),
                         )
                       ],
                     ),
