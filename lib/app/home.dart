@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:football/constant/texts.dart';
+import 'package:football/locale/app_localization.dart';
 import 'package:football/model/club.dart';
 import 'package:football/service/club_repository.dart';
+import 'package:football/service/exception.dart';
 import 'package:football/widget/action_icon_button.dart';
 import 'package:football/widget/club_list_view.dart';
 import 'package:football/widget/loading_data_widget.dart';
@@ -16,6 +18,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalization msg = AppLocalization.of(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,9 +34,16 @@ class _HomeState extends State<Home> {
         body: FutureBuilder(
           future: ClubRepository.getClubs(ascOrder),
           builder: (context, AsyncSnapshot<List<Club>> snapshot) {
+            if (snapshot.hasError) {
+              return NotifyPanel(
+                text: ExceptionCatcher.getMessage(snapshot.error),
+                color: Colors.red,
+              );
+            }
+
             return snapshot.hasData
                 ? ClubListView(snapshot: snapshot)
-                : LoadingDataWidget();
+                : NotifyPanel(text: msg.loadingData);
           },
         ),
       ),
