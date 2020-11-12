@@ -19,7 +19,7 @@ class ClubRepository {
     if (ascOrder) {
       list.sort((a, b) => a.name.compareTo(b.name));
     } else {
-      list.sort((a, b) => b.name.compareTo(a.name));
+      list.sort((a, b) => b.value.compareTo(a.value));
     }
 
     return list;
