@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:football/constant/constants.dart';
 import 'package:football/locale/app_localization.dart';
 import 'package:football/model/club.dart';
-import 'package:football/locale/app_localization.dart';
 
 class ViewClubScreen extends StatelessWidget {
   static String id = 'view_screen';
@@ -37,10 +36,9 @@ class ViewClubScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 24.0),
                   Expanded(
-                    child: Image.network(
-                      club.image,
-                      // height: 160.0,
-                    ),
+                    child: club.hasImage
+                        ? Image.network(club.image)
+                        : Icon(Icons.error, color: Colors.white70, size: 120.0),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,

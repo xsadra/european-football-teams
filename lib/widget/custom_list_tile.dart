@@ -84,9 +84,9 @@ class CustomListTile extends StatelessWidget {
     return SizedBox(
       height: 56.0,
       width: 56.0,
-      child: Image.network(
-        club.image,
-      ),
+      child: club.hasImage
+          ? Image.network(club.image)
+          : Icon(Icons.error, color: Colors.black26, size: 48.0),
     );
   }
 }
