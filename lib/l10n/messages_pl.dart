@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "appTitle" : MessageLookupByLibrary.simpleMessage("wszystko o klubach"),
+    "loadingData" : MessageLookupByLibrary.simpleMessage("Ładowanie danych ..."),
     "club" : MessageLookupByLibrary.simpleMessage("Klub"),
     "firstMessage" : MessageLookupByLibrary.simpleMessage(" z xCountry jest wart xValue mln euro."),
     "secondMessage" : MessageLookupByLibrary.simpleMessage(" do tej pory odniósł xVictorious vtriumf na poziomie europejskim")

@@ -23,6 +23,11 @@ class AppLocalization {
         name: 'appTitle',
       );
 
+  String get loadingData => Intl.message(
+        'Loading Data ...',
+        name: 'loadingData',
+      );
+
   String get club => Intl.message(
         'club',
         name: 'club',

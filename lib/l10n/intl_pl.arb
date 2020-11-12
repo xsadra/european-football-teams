@@ -5,6 +5,11 @@
     "type": "text",
     "placeholders": {}
   },
+  "loadingData": "Ładowanie danych ...",
+  "@loadingData": {
+    "type": "text",
+    "placeholders": {}
+  },
   "club": "Klub",
   "@club": {
     "type": "text",
