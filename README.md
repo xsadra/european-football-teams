@@ -44,7 +44,7 @@ european_titles… # of the won titles
   - Sorting by clubdescending order
 - There is no selection , the filter changes with every click
 
-<img src="https://lh3.googleusercontent.com/ZdEKdJCLPq_WpLVfw2Nfjjl0JpkRVbIPg2BWJDk4h4sQFcikxo2EGqyyEwRxEshYb7p8gdigI9ZzBNIHmWf_2fCaU9JJPmp63Nx_QI0e">
+<img src="https://user-images.githubusercontent.com/31988724/99004788-f47e0900-253f-11eb-8645-fbcb0f26975d.png"  height="480">
 
 ### Club - detailed view
 **Subsequent changes made by the customer:**
@@ -52,7 +52,9 @@ The API returns another field which indicates how many titles the respective clu
 `Example: "european_titles": 5`
 In the detailed view the following should be added:
 `“CLUB NAME has so far achieved X victories at European level.”`
-![alt text](https://lh6.googleusercontent.com/Dc-UZMXec707_Et8-QTYNg0S6ruZWCYN_M0qW8q1ps22s1jzfbOQZzcTVLDUXTN1vUaj3kO7p990ZUvB8cdSn5dYKe5N7X071_i57v_H)
+
+
+<img src="https://user-images.githubusercontent.com/31988724/99004794-f5af3600-253f-11eb-97db-113cb7f9aabf.png"  height="480">
 
 ### Technology tags
 `intl`, `RxDart`, `dio`, `retrofit`, `provider`, `GetX`, `Moor`
