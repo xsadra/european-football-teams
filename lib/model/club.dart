@@ -1,4 +1,3 @@
-
 import 'package:football/model/location.dart';
 import 'package:football/model/stadium.dart';
 
@@ -8,6 +7,7 @@ class Club {
   String country;
   int value;
   String image;
+  bool hasImage;
   int europeanTitles;
   Stadium stadium;
   Location location;
@@ -18,24 +18,33 @@ class Club {
       this.country,
       this.value,
       this.image,
+      this.hasImage,
       this.europeanTitles,
       this.stadium,
       this.location});
 
-  @override
-  String toString() {
-    return 'Club{id: $id, name: $name, country: $country, value: $value, image: $image, europeanTitles: $europeanTitles, stadium: $stadium, location: $location}';
-  }
-
   Club.fromJson(Map<String, dynamic> json) {
+    if (json['name'] == null ||
+        json['country'] == null ||
+        json['value'] == null ||
+        json['european_titles'] == null) {
+      throw new Exception(["DATA_CORRUPTED"]);
+    }
+
     id = json['id'];
     name = json['name'];
     country = json['country'];
-    value = json['value'];
+    value = int.parse(json['value'].toString());
     image = json['image'];
-    europeanTitles = json['european_titles'];
+    hasImage = json['image'] != null;
+    europeanTitles = int.parse(json['european_titles'].toString());
     stadium = Stadium.fromJson(json['stadium']);
     location = Location.fromJson(json['location']);
+  }
+
+  @override
+  String toString() {
+    return 'Club{id: $id, name: $name, country: $country, value: $value, image: $image, hasImage: $hasImage, europeanTitles: $europeanTitles, stadium: $stadium, location: $location}';
   }
 
   @override
